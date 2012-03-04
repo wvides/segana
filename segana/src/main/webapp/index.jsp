@@ -5,7 +5,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Platinum Theme - Free CSS Template</title>
+<title>Se Gana gambling site</title>
 <meta name="keywords" content="platinum, web design theme, free templates, website templates, CSS, HTML" />
 <meta name="description" content="Platinum Theme is a free CSS template provided by templatemo.com" />
 <link href="css/templatemo_style.css" rel="stylesheet" type="text/css" />
@@ -54,24 +54,30 @@ ddsmoothmenu.init({
                 <div id="templatemo_menu" class="ddsmoothmenu">
                     <ul>
                         <li><a href="index.html" class="selected"><span></span>Home</a></li>
-                        <li><a href="about.html"><span></span>About Us</a>
+                        <li><a href="about.html"><span></span>Play</a>
                             <ul>
-                                <li><a href="submenupage.html">Sub menu 1</a></li>
-                                <li><a href="submenupage.html">Sub menu 2</a></li>
-                                <li><a href="submenupage.html">Sub menu 3</a></li>
+                                <li><a href="submenupage.html">For Virtual Money</a></li>
+                                <li><a href="submenupage.html">For Real Money</a></li>                                
+                            </ul>
+                        </li>                        
+                        <li><a href="blog.html"><span></span>Login</a>
+                            <ul>
+                                    <li><a href="submenupage.html">Sign in</a></li>
+                                    <li><a href="submenupage.html">Sign up</a></li>                                
                             </ul>
                         </li>
-                        <li><a href="portfolio.html"><span></span>Portfolio</a>
+                        <li><a href="portfolio.html"><span></span>About Us</a>
                             <ul>
-                                <li><a href="submenupage.html">Sub menu 1</a></li>
-                                <li><a href="submenupage.html">Sub menu 2</a></li>
-                                <li><a href="submenupage.html">Sub menu 3</a></li>
-                                <li><a href="submenupage.html">Sub menu 4</a></li>
-                                <li><a href="submenupage.html">Sub menu 5</a></li>
+                                <li><a href="submenupage.html">About "Se Gana"</a></li>
+                                <li><a href="submenupage.html">About Developers</a></li>                                
                         </ul>
-                    </li>
-                    <li><a href="blog.html"><span></span>Blog</a></li>
-                    <li><a href="contact.html"><span></span>Contact</a></li>
+                        </li>
+                        <li><a href="contact.html"><span></span>Contact</a>
+                            <ul>
+                                    <li><a href="submenupage.html">IRC Channel</a></li>
+                                    <li><a href="submenupage.html">Via Email</a></li>                                
+                            </ul>
+                        </li>
                     </ul>
                     <br style="clear: left" />
                 </div> <!-- end of menu -->
@@ -90,6 +96,18 @@ ddsmoothmenu.init({
                         <img src="images/slider/02.jpg" alt="Slider 02" />
                         <img src="images/slider/03.jpg" alt="Slider 03" />
                         <img src="images/slider/04.jpg" alt="Slider 04" />
+                        <img src="images/slider/05.jpg" alt="Slider 05" />                        
+                        <img src="images/slider/06.jpg" alt="Slider 06" />
+                        <img src="images/slider/07.jpg" alt="Slider 07" />
+                        <img src="images/slider/08.jpg" alt="Slider 08" />
+                        <img src="images/slider/09.jpg" alt="Slider 09" />
+                        <img src="images/slider/10.jpg" alt="Slider 10" />
+                        <img src="images/slider/11.jpg" alt="Slider 11" />
+                        <img src="images/slider/12.jpg" alt="Slider 12" />
+                        
+                        <img src="images/slider/14.jpg" alt="Slider 14" />
+                        <img src="images/slider/15.jpg" alt="Slider 15" />
+                        <img src="images/slider/16.jpg" alt="Slider 16" />
                     </div>
 
                 </div>
@@ -107,16 +125,16 @@ ddsmoothmenu.init({
                 <div id="templatemo_main">
                         <div id="content">
                                         <div class="post">
-                        <h2>Free CSS Templates</h2>
+                        <h2>Play for Virtual money or Real money</h2>
                         <div class="meta">Posted in <a href="#">Illustrations</a>, <a href="#">Graphics</a> | Date: June 24, 2048 | <a href="#">136 comments</a></div>
 
-                            <img src="images/templatemo_image_01.png" alt="Image 01" class="image_frame image_fl" />
-                            <p><a href="http://www.templatemo.com" target="_parent">Platinum Theme</a> is a free css template for your personal or commercial websites. Credits go to <a href="http://www.brushesbee.com/" target="_blank">brushesbee.com</a> for brush and <a href="http://jwloh.deviantart.com/art/Aquaticus-Social-91014249" target="_blank">jwloh</a> for icons. Ut sed lorem ac ante cursus auctor. Nam ut congue velit. Cras eget fermentum sem. Maecenas nec purus lorem, a sodales lectus. Etiam consequat nulla sit amet nisl volutpat ornare. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Fusce nec dapibus sapien. Morbi viverra mauris id erat ultricies dignissim. Mauris leo eu est fermentum eu viverra sem rutrum. Nulla ut consectetur purus. Morbi lacus ligula, dapibus vitae blandit et, auctor sit amet erat. Validate <a href="http://validator.w3.org/check?uri=referer" rel="nofollow"><strong>XHTML</strong></a> &amp; <a href="http://jigsaw.w3.org/css-validator/check/referer" rel="nofollow"><strong>CSS</strong></a>.</p>
+                            <img src="images/money.png" alt="Image 01" class="image_frame image_fl" />
+                            <p>Information about how to play here...</p>
                             <a href="#" class="more float_r"></a>
                             <div class="cleaner"></div>
                                         </div>
                         <div class="col_2 float_l">
-                                <h3>Recent Posts</h3>
+                                <h3>Recent Games</h3>
                             <div class="rp_pp">
                                 <img class="image_frame" src="images/templatemo_image_02.png" alt="Image 02" />
                                 <a href="#">In sem ligula, elementum at ultricies tempus.</a>
@@ -139,7 +157,7 @@ ddsmoothmenu.init({
                             <a href="#" class="more"></a>
                         </div>
                         <div class="col_2 float_r">
-                                <h3>Popular Posts</h3>
+                                <h3>Popular Games</h3>
                             <div class="rp_pp">
                                 <img class="image_frame" src="images/templatemo_image_05.png" alt="Image 05" />
                                 <a href="#">Donec semper dolor quis purus id ut tellus.</a>
@@ -174,13 +192,13 @@ ddsmoothmenu.init({
                         <div class="sb_box">
                             <h3>Categories</h3>
                             <ul class="templatemo_list">
-                                <li>Augue felis pharetra felis</li>
-                                <li>Curabitur eget tincidunt</li>
-                                <li>Donec sed nulla sit amet</li>
-                                <li>Felis pharetra felis sed</li>
-                                <li>Integer placerat dolor vel</li>
-                                <li>Tortor mi in massa donec</li>
-                                <li>Vulputate tortor in massa</li>
+                                <li><a href="#">Fantastic Bet</a></li>
+                                <li><a href="#">Simple Bet</a></li>
+                                <li><a href="#">-</a></li>
+                                <li><a href="#">-</a></li>
+                                <li><a href="#">-</a></li>
+                                <li><a href="#">-</a></li>
+                                <li><a href="#">-</a></li>
                             </ul>
                                         </div>
                         <div class="sb_box">
@@ -215,8 +233,8 @@ ddsmoothmenu.init({
                         <h5>Pages</h5>
                     <ul class="footer_list">
                         <li><a href="home.html">Home</a></li>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="about.html">Play</a></li>
+                        <li><a href="portfolio.html">About Us</a></li>
                         <li><a href="blog.html">Blog</a></li>
                         <li><a href="contact.html">Contact</a></li>
                                 </ul>
