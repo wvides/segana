@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+  <persistence-unit name="Segana_grupo_I_segana_war_1.0-SNAPSHOTPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>segana.Opcion</class>
+    <class>segana.Tarjeta</class>
+    <class>segana.Encuentro</class>
+    <class>segana.Acesso</class>
+    <class>segana.Equipo</class>
+    <class>segana.Pronostico</class>
+    <class>segana.Modulo</class>
+    <class>segana.Rol</class>
+    <class>segana.Deporte</class>
+    <class>segana.Participacion</class>
+    <class>segana.Rolusuario</class>
+    <class>segana.Usuario</class>
+    <class>segana.Edicion</class>
+    <class>segana.Apuesta</class>
+    <class>segana.Torneo</class>
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/gana"/>
+      <property name="javax.persistence.jdbc.password" value="root"/>
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+      <property name="javax.persistence.jdbc.user" value="root"/>
+    </properties>
+  </persistence-unit>
+</persistence>
