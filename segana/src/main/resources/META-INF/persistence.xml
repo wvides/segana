@@ -2,21 +2,21 @@
 <persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
   <persistence-unit name="Segana_grupo_I_segana_war_1.0-SNAPSHOTPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-    <class>segana.Opcion</class>
-    <class>segana.Tarjeta</class>
-    <class>segana.Encuentro</class>
-    <class>segana.Acesso</class>
-    <class>segana.Equipo</class>
-    <class>segana.Pronostico</class>
-    <class>segana.Modulo</class>
-    <class>segana.Rol</class>
-    <class>segana.Deporte</class>
-    <class>segana.Participacion</class>
-    <class>segana.Rolusuario</class>
-    <class>segana.Usuario</class>
-    <class>segana.Edicion</class>
-    <class>segana.Apuesta</class>
-    <class>segana.Torneo</class>
+    <class>.Edicion</class>
+    <class>.Opcion</class>
+    <class>.Rolusuario</class>
+    <class>.Modulo</class>
+    <class>.Rol</class>
+    <class>.Tarjeta</class>
+    <class>.Torneo</class>
+    <class>.Apuesta</class>
+    <class>.Equipo</class>
+    <class>.Participacion</class>
+    <class>.Pronostico</class>
+    <class>.Encuentro</class>
+    <class>.Acesso</class>
+    <class>.Usuario</class>
+    <class>.Deporte</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/gana"/>

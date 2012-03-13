@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 13, 2012 4:29:31 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="segana.Participacion" table="participacion" catalog="gana">
+        <id name="idparticipacion" type="int">
+            <column name="idparticipacion" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="edicion" class="segana.Edicion" fetch="select">
+            <column name="edicion_idedicion" not-null="true" />
+        </many-to-one>
+        <many-to-one name="equipo" class="segana.Equipo" fetch="select">
+            <column name="equipo_idequipo" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

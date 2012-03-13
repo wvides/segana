@@ -1,17 +1,23 @@
+package logic;
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package logic;
+
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import segana.*;
+import org.hibernate.Query;
+import org.hibernate.Session;
 
 /**
  *
@@ -35,17 +41,19 @@ public class log extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
-            /*
-             * TODO output your page here. You may use following sample code.
-             */
+            filmaker();            
+            
+            //response.sendRedirect(response.encodeRedirectURL("index.jsp"));
+            response.setHeader("Refresh", "3, URL=index.js");
             out.println("<html>");
             out.println("<head>");
             out.println("<title>Servlet log</title>");            
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet log at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            out.println("<br/> requested: " + request.getParameter("username"));
+            out.println("</body>");            
+            out.println("</html>");            
         } finally {            
             out.close();
         }
@@ -91,4 +99,19 @@ public class log extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    private void filmaker() {
+//        Session session = null;
+//        session = HibernateUtil.getSessionFactory().getCurrentSession();        
+//         List<Usuario> usuarios = null;
+//         
+//        try 
+//        {            
+//            org.hibernate.Transaction tx = session.beginTransaction();
+//            Query q = session.createQuery ("from Usuario");
+//            usuarios = (List<Usuario>) q.list();
+//        } 
+//        catch (Exception e) 
+//        {                    }
+    }
 }

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 13, 2012 4:29:31 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="segana.Modulo" table="modulo" catalog="gana">
+        <id name="idmodulo" type="int">
+            <column name="idmodulo" />
+            <generator class="assigned" />
+        </id>
+        <property name="descrpipcion" type="string">
+            <column name="descrpipcion" length="45" />
+        </property>
+        <set name="opcions" inverse="true">
+            <key>
+                <column name="modulo_idmodulo" not-null="true" />
+            </key>
+            <one-to-many class="segana.Opcion" />
+        </set>
+    </class>
+</hibernate-mapping>

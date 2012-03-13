@@ -7,5 +7,22 @@
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/gana</property>
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.connection.password">root</property>
+    <property name="hibernate.query.factory_class">org.hibernate.hql.classic.ClassicQueryTranslatorFactory</property>
+    <property name="hibernate.show_sql">true</property>
+    <mapping resource="segana/Rolusuario.hbm.xml"/>
+    <mapping resource="segana/Modulo.hbm.xml"/>
+    <mapping resource="segana/Pronostico.hbm.xml"/>
+    <mapping resource="segana/Edicion.hbm.xml"/>
+    <mapping resource="segana/Rol.hbm.xml"/>
+    <mapping resource="segana/Torneo.hbm.xml"/>
+    <mapping resource="segana/Encuentro.hbm.xml"/>
+    <mapping resource="segana/Tarjeta.hbm.xml"/>
+    <mapping resource="segana/Acesso.hbm.xml"/>
+    <mapping resource="segana/Opcion.hbm.xml"/>
+    <mapping resource="segana/Equipo.hbm.xml"/>
+    <mapping resource="segana/Participacion.hbm.xml"/>
+    <mapping resource="segana/Usuario.hbm.xml"/>
+    <mapping resource="segana/Deporte.hbm.xml"/>
+    <mapping resource="segana/Apuesta.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

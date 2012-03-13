@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 13, 2012 4:29:31 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="segana.Rol" table="rol" catalog="gana">
+        <id name="idrol" type="int">
+            <column name="idrol" />
+            <generator class="assigned" />
+        </id>
+        <property name="descripcion" type="string">
+            <column name="descripcion" length="45" />
+        </property>
+        <set name="rolusuarios" inverse="true">
+            <key>
+                <column name="rol_idrol" not-null="true" />
+            </key>
+            <one-to-many class="segana.Rolusuario" />
+        </set>
+        <set name="acessos" inverse="true">
+            <key>
+                <column name="rol_idrol" not-null="true" />
+            </key>
+            <one-to-many class="segana.Acesso" />
+        </set>
+    </class>
+</hibernate-mapping>

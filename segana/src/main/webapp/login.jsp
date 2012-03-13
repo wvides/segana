@@ -46,11 +46,11 @@ ddsmoothmenu.init({
 </script>
     </head>
     <body>
-
+       
         <div id="templatemo_wrapper">
 
             <div id="templatemo_header">
-                <div id="site_title"><h1><a href="">Se Gana</a></h1></div>
+                <div id="site_title"><h1><a href="index.jsp">Se Gana</a></h1></div>
                 <div id="templatemo_menu" class="ddsmoothmenu">
                     <ul>
                         <li><a href="index.html" class="selected"><span></span>Home</a></li>
@@ -87,13 +87,15 @@ ddsmoothmenu.init({
                 <div id="templatemo_middle_left">
                         <h2><strong>Se gana Login</strong></h2>
                     <p>You can create a login account here, or login with your account.</p>
-                    <form name="login" action="log.java">
+                    
+                    <form name="login" action="log" method="POST">
                         User Name<input type="text" name="username" value="" size="25" />
                         <br/>
                         Password <input type="password" name="password" value="" size="25" />
                         <br/>     
                         <input type="submit" value="Register" name="reg" />
                     </form>
+                    
                 </div>
                 <div id="slider-wrapper">
 

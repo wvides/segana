@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 13, 2012 4:29:31 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="segana.Equipo" table="equipo" catalog="gana">
+        <id name="idequipo" type="int">
+            <column name="idequipo" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="nombre" length="150" />
+        </property>
+        <property name="rankin" type="java.lang.Integer">
+            <column name="rankin" />
+        </property>
+        <property name="fundacion" type="date">
+            <column name="fundacion" length="10" />
+        </property>
+        <set name="participacions" inverse="true">
+            <key>
+                <column name="equipo_idequipo" not-null="true" />
+            </key>
+            <one-to-many class="segana.Participacion" />
+        </set>
+        <set name="pronosticos" inverse="true">
+            <key>
+                <column name="equipo_idequipo" not-null="true" />
+            </key>
+            <one-to-many class="segana.Pronostico" />
+        </set>
+        <set name="encuentrosForEquipoIdequipo" inverse="true">
+            <key>
+                <column name="equipo_idequipo" not-null="true" />
+            </key>
+            <one-to-many class="segana.Encuentro" />
+        </set>
+        <set name="encuentrosForEquipoIdequipo1" inverse="true">
+            <key>
+                <column name="equipo_idequipo1" not-null="true" />
+            </key>
+            <one-to-many class="segana.Encuentro" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 13, 2012 4:29:31 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="segana.Tarjeta" table="tarjeta" catalog="gana">
+        <id name="idtarjeta" type="int">
+            <column name="idtarjeta" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="usuario" class="segana.Usuario" fetch="select">
+            <column name="usuario_idusuario" not-null="true" />
+        </many-to-one>
+        <property name="descripcion" type="string">
+            <column name="descripcion" length="145" />
+        </property>
+        <property name="fechaVence" type="date">
+            <column name="fecha_vence" length="10" />
+        </property>
+        <property name="nombre" type="string">
+            <column name="nombre" length="75" />
+        </property>
+    </class>
+</hibernate-mapping>

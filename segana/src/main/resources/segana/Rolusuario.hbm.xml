@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 13, 2012 4:29:31 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="segana.Rolusuario" table="rolusuario" catalog="gana">
+        <id name="idrolusuario" type="int">
+            <column name="idrolusuario" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="rol" class="segana.Rol" fetch="select">
+            <column name="rol_idrol" not-null="true" />
+        </many-to-one>
+        <many-to-one name="usuario" class="segana.Usuario" fetch="select">
+            <column name="usuario_idusuario" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

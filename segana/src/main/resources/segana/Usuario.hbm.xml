@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 13, 2012 4:29:31 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="segana.Usuario" table="usuario" catalog="gana">
+        <id name="idusuario" type="int">
+            <column name="idusuario" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="nombre" length="250" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="200" />
+        </property>
+        <property name="fechaNac" type="date">
+            <column name="fecha_nac" length="10" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" length="45" />
+        </property>
+        <property name="direccion" type="string">
+            <column name="direccion" length="150" />
+        </property>
+        <property name="tarjeta" type="string">
+            <column name="tarjeta" length="100" />
+        </property>
+        <set name="apuestas" inverse="true">
+            <key>
+                <column name="usuario_idusuario" not-null="true" />
+            </key>
+            <one-to-many class="segana.Apuesta" />
+        </set>
+        <set name="rolusuarios" inverse="true">
+            <key>
+                <column name="usuario_idusuario" not-null="true" />
+            </key>
+            <one-to-many class="segana.Rolusuario" />
+        </set>
+        <set name="tarjetas" inverse="true">
+            <key>
+                <column name="usuario_idusuario" not-null="true" />
+            </key>
+            <one-to-many class="segana.Tarjeta" />
+        </set>
+    </class>
+</hibernate-mapping>

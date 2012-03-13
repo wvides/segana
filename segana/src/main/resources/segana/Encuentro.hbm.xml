@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 13, 2012 4:29:31 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="segana.Encuentro" table="encuentro" catalog="gana">
+        <id name="idencuentro" type="int">
+            <column name="idencuentro" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="edicion" class="segana.Edicion" fetch="select">
+            <column name="edicion_idedicion" not-null="true" />
+        </many-to-one>
+        <many-to-one name="equipoByEquipoIdequipo" class="segana.Equipo" fetch="select">
+            <column name="equipo_idequipo" not-null="true" />
+        </many-to-one>
+        <many-to-one name="equipoByEquipoIdequipo1" class="segana.Equipo" fetch="select">
+            <column name="equipo_idequipo1" not-null="true" />
+        </many-to-one>
+        <property name="escenario" type="string">
+            <column name="escenario" length="150" />
+        </property>
+        <property name="fecha" type="date">
+            <column name="fecha" length="10" />
+        </property>
+        <set name="apuestas" inverse="true">
+            <key>
+                <column name="encuentro_idencuentro" not-null="true" />
+            </key>
+            <one-to-many class="segana.Apuesta" />
+        </set>
+    </class>
+</hibernate-mapping>

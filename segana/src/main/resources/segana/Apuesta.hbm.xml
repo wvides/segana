@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 13, 2012 4:29:31 PM by Hibernate Tools 3.2.1.GA -->
+<hibernate-mapping>
+    <class name="segana.Apuesta" table="apuesta" catalog="gana">
+        <id name="idapuesta" type="int">
+            <column name="idapuesta" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="usuario" class="segana.Usuario" fetch="select">
+            <column name="usuario_idusuario" not-null="true" />
+        </many-to-one>
+        <many-to-one name="encuentro" class="segana.Encuentro" fetch="select">
+            <column name="encuentro_idencuentro" not-null="true" />
+        </many-to-one>
+        <property name="monto" type="big_decimal">
+            <column name="monto" precision="20" />
+        </property>
+        <set name="pronosticos" inverse="true">
+            <key>
+                <column name="apuesta_idapuesta" not-null="true" />
+            </key>
+            <one-to-many class="segana.Pronostico" />
+        </set>
+    </class>
+</hibernate-mapping>

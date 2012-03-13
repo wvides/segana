@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
+<hibernate-reverse-engineering>
+  <schema-selection match-catalog="gana"/>
+  <table-filter match-name="apuesta"/>
+  <table-filter match-name="rolusuario"/>
+  <table-filter match-name="equipo"/>
+  <table-filter match-name="encuentro"/>
+  <table-filter match-name="torneo"/>
+  <table-filter match-name="usuario"/>
+  <table-filter match-name="tarjeta"/>
+  <table-filter match-name="deporte"/>
+  <table-filter match-name="rol"/>
+  <table-filter match-name="participacion"/>
+  <table-filter match-name="edicion"/>
+  <table-filter match-name="opcion"/>
+  <table-filter match-name="modulo"/>
+  <table-filter match-name="acesso"/>
+  <table-filter match-name="pronostico"/>
+</hibernate-reverse-engineering>

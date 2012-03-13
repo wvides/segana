@@ -46,11 +46,11 @@ ddsmoothmenu.init({
 </script>
     </head>
     <body>
-
+        
         <div id="templatemo_wrapper">
 
             <div id="templatemo_header">
-                <div id="site_title"><h1><a href="">Se Gana</a></h1></div>
+                <div id="site_title"><h1><a href="index.jsp">Se Gana</a></h1></div>
                 <div id="templatemo_menu" class="ddsmoothmenu">
                     <ul>
                         <li><a href="index.html" class="selected"><span></span>Home</a></li>
