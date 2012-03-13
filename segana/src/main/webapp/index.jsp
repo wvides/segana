@@ -62,8 +62,8 @@ ddsmoothmenu.init({
                         </li>                        
                         <li><a href="blog.html"><span></span>Login</a>
                             <ul>
-                                    <li><a href="submenupage.html">Sign in</a></li>
-                                    <li><a href="submenupage.html">Sign up</a></li>                                
+                                    <li><a href="login.jsp">Sign in (Have account)</a></li>
+                                    <li><a href="login.jsp">Sign up (Create account)</a></li>                                
                             </ul>
                         </li>
                         <li><a href="portfolio.html"><span></span>About Us</a>
@@ -103,8 +103,7 @@ ddsmoothmenu.init({
                         <img src="images/slider/09.jpg" alt="Slider 09" />
                         <img src="images/slider/10.jpg" alt="Slider 10" />
                         <img src="images/slider/11.jpg" alt="Slider 11" />
-                        <img src="images/slider/12.jpg" alt="Slider 12" />
-                        
+                        <img src="images/slider/12.jpg" alt="Slider 12" />                        
                         <img src="images/slider/14.jpg" alt="Slider 14" />
                         <img src="images/slider/15.jpg" alt="Slider 15" />
                         <img src="images/slider/16.jpg" alt="Slider 16" />
