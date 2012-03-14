@@ -61,7 +61,7 @@ public class log extends HttpServlet {
             
             if(myuser.isEmpty())
             {
-                String dat = request.getParameter("year") + "/" + request.getParameter("month") + "/" + request.getParameter("email");
+                String dat = request.getParameter("anio") + "/" + request.getParameter("mes") + "/" + request.getParameter("dia");
                 java.util.Date utilDate = null;
                 SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
                 try {
