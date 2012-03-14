@@ -40,10 +40,10 @@ public class log extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        try {
-            List<Usuario>  myuser = filmaker();            
+        try {                        
             
-            //response.sendRedirect(response.encodeRedirectURL("index.jsp"));            
+            List<Usuario>  myuser = validateuser(request.getParameter("email"));
+            
             response.setHeader("Refresh", "5, URL=index.jsp");
             out.println("<html>");
             out.println("<head>");
@@ -52,7 +52,8 @@ public class log extends HttpServlet {
             out.println("<body>");
             out.println("<h1>Servlet log at " + request.getContextPath() + "</h1>");
             //out.println("<br/> requested: " + request.getParameter("username"));
-            out.println("Esta pagina lo redirigira al inicio en 5 segundos");
+            out.println("Esta pagina lo redirigira al inicio en 5 segundos <br/> O puede hacer click en el siguiente enlace");
+            out.println("para volver al inicio <a href=\"index.jsp\">Inicio</a>");
             
             Iterator u = myuser.iterator();
             while(u.hasNext())
@@ -114,6 +115,15 @@ public class log extends HttpServlet {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         Query q = session.createQuery("FROM Usuario");
+        List<Usuario> resultList = q.list();        
+        session.getTransaction().commit();   
+        return resultList;
+    }
+
+    private List<Usuario> validateuser(String parameter) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        Query q = session.createQuery("FROM Usuario WHERE email LIKE'" + parameter + "'");
         List<Usuario> resultList = q.list();        
         session.getTransaction().commit();   
         return resultList;

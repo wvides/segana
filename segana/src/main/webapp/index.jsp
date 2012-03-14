@@ -201,7 +201,7 @@ ddsmoothmenu.init({
                             </ul>
                                         </div>
                         <div class="sb_box">
-                                <h3>Flickr Stream</h3>
+                                <h3>Resultados de la semana</h3>
                             <ul class="flickr_stream">
                                 <li><a href="#"><img class="image_frame" src="images/templatemo_image_02.png" alt="Flickr 01" /></a></li>
                                 <li><a href="#"><img class="image_frame" src="images/templatemo_image_03.png" alt="Flickr 02" /></a></li>
