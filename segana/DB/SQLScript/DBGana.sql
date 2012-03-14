@@ -9,7 +9,7 @@ USE `gana` ;
 -- Table `gana`.`usuario`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `gana`.`usuario` (
-  `idusuario` INT NOT NULL ,
+  `idusuario` INT NOT NULL AUTO_INCREMENT ,
   `nombre` VARCHAR(250) NULL ,
   `email` VARCHAR(200) NULL ,
   `fecha_nac` DATE NULL ,
@@ -24,7 +24,7 @@ ENGINE = InnoDB;
 -- Table `gana`.`rol`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `gana`.`rol` (
-  `idrol` INT NOT NULL ,
+  `idrol` INT NOT NULL AUTO_INCREMENT ,
   `descripcion` VARCHAR(45) NULL ,
   PRIMARY KEY (`idrol`) )
 ENGINE = InnoDB;
@@ -34,10 +34,12 @@ ENGINE = InnoDB;
 -- Table `gana`.`rolusuario`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `gana`.`rolusuario` (
-  `idrolusuario` INT NOT NULL ,
+  `idrolusuario` INT NOT NULL AUTO_INCREMENT ,
   `usuario_idusuario` INT NOT NULL ,
   `rol_idrol` INT NOT NULL ,
   PRIMARY KEY (`idrolusuario`) ,
+  INDEX `fk_rolusuario_usuario1` (`usuario_idusuario` ASC) ,
+  INDEX `fk_rolusuario_rol1` (`rol_idrol` ASC) ,
   CONSTRAINT `fk_rolusuario_usuario1`
     FOREIGN KEY (`usuario_idusuario` )
     REFERENCES `gana`.`usuario` (`idusuario` )
@@ -50,21 +52,18 @@ CREATE  TABLE IF NOT EXISTS `gana`.`rolusuario` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE INDEX `fk_rolusuario_usuario1` ON `gana`.`rolusuario` (`usuario_idusuario` ASC) ;
-
-CREATE INDEX `fk_rolusuario_rol1` ON `gana`.`rolusuario` (`rol_idrol` ASC) ;
-
 
 -- -----------------------------------------------------
 -- Table `gana`.`tarjeta`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `gana`.`tarjeta` (
-  `idtarjeta` INT NOT NULL ,
+  `idtarjeta` INT NOT NULL AUTO_INCREMENT ,
   `descripcion` VARCHAR(145) NULL ,
   `fecha_vence` DATE NULL ,
   `nombre` VARCHAR(75) NULL ,
   `usuario_idusuario` INT NOT NULL ,
   PRIMARY KEY (`idtarjeta`) ,
+  INDEX `fk_tarjeta_usuario` (`usuario_idusuario` ASC) ,
   CONSTRAINT `fk_tarjeta_usuario`
     FOREIGN KEY (`usuario_idusuario` )
     REFERENCES `gana`.`usuario` (`idusuario` )
@@ -72,14 +71,12 @@ CREATE  TABLE IF NOT EXISTS `gana`.`tarjeta` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE INDEX `fk_tarjeta_usuario` ON `gana`.`tarjeta` (`usuario_idusuario` ASC) ;
-
 
 -- -----------------------------------------------------
 -- Table `gana`.`modulo`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `gana`.`modulo` (
-  `idmodulo` INT NOT NULL ,
+  `idmodulo` INT NOT NULL AUTO_INCREMENT ,
   `descrpipcion` VARCHAR(45) NULL ,
   PRIMARY KEY (`idmodulo`) )
 ENGINE = InnoDB;
@@ -89,13 +86,14 @@ ENGINE = InnoDB;
 -- Table `gana`.`opcion`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `gana`.`opcion` (
-  `idopcion` INT NOT NULL ,
+  `idopcion` INT NOT NULL AUTO_INCREMENT ,
   `titulo` VARCHAR(45) NULL ,
   `descripcion` VARCHAR(245) NULL ,
   `link` VARCHAR(345) NULL ,
   `orden` INT NULL ,
   `modulo_idmodulo` INT NOT NULL ,
   PRIMARY KEY (`idopcion`) ,
+  INDEX `fk_opcion_modulo1` (`modulo_idmodulo` ASC) ,
   CONSTRAINT `fk_opcion_modulo1`
     FOREIGN KEY (`modulo_idmodulo` )
     REFERENCES `gana`.`modulo` (`idmodulo` )
@@ -103,17 +101,17 @@ CREATE  TABLE IF NOT EXISTS `gana`.`opcion` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE INDEX `fk_opcion_modulo1` ON `gana`.`opcion` (`modulo_idmodulo` ASC) ;
-
 
 -- -----------------------------------------------------
 -- Table `gana`.`acesso`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `gana`.`acesso` (
-  `idacesso` INT NOT NULL ,
+  `idacesso` INT NOT NULL AUTO_INCREMENT ,
   `rol_idrol` INT NOT NULL ,
   `opcion_idopcion` INT NOT NULL ,
   PRIMARY KEY (`idacesso`) ,
+  INDEX `fk_acesso_rol1` (`rol_idrol` ASC) ,
+  INDEX `fk_acesso_opcion1` (`opcion_idopcion` ASC) ,
   CONSTRAINT `fk_acesso_rol1`
     FOREIGN KEY (`rol_idrol` )
     REFERENCES `gana`.`rol` (`idrol` )
@@ -126,16 +124,12 @@ CREATE  TABLE IF NOT EXISTS `gana`.`acesso` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE INDEX `fk_acesso_rol1` ON `gana`.`acesso` (`rol_idrol` ASC) ;
-
-CREATE INDEX `fk_acesso_opcion1` ON `gana`.`acesso` (`opcion_idopcion` ASC) ;
-
 
 -- -----------------------------------------------------
 -- Table `gana`.`deporte`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `gana`.`deporte` (
-  `iddeporte` INT NOT NULL ,
+  `iddeporte` INT NOT NULL AUTO_INCREMENT ,
   `nombre` VARCHAR(75) NULL ,
   PRIMARY KEY (`iddeporte`) )
 ENGINE = InnoDB;
@@ -145,11 +139,12 @@ ENGINE = InnoDB;
 -- Table `gana`.`torneo`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `gana`.`torneo` (
-  `idtorneo` INT NOT NULL ,
+  `idtorneo` INT NOT NULL AUTO_INCREMENT ,
   `nombre` VARCHAR(150) NULL ,
   `edicion_idedicion` INT NOT NULL ,
   `deporte_iddeporte` INT NOT NULL ,
-  PRIMARY KEY (`idtorneo`, `deporte_iddeporte`) ,
+  PRIMARY KEY (`idtorneo`) ,
+  INDEX `fk_torneo_deporte1` (`deporte_iddeporte` ASC) ,
   CONSTRAINT `fk_torneo_deporte1`
     FOREIGN KEY (`deporte_iddeporte` )
     REFERENCES `gana`.`deporte` (`iddeporte` )
@@ -157,14 +152,12 @@ CREATE  TABLE IF NOT EXISTS `gana`.`torneo` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE INDEX `fk_torneo_deporte1` ON `gana`.`torneo` (`deporte_iddeporte` ASC) ;
-
 
 -- -----------------------------------------------------
 -- Table `gana`.`equipo`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `gana`.`equipo` (
-  `idequipo` INT NOT NULL ,
+  `idequipo` INT NOT NULL AUTO_INCREMENT ,
   `nombre` VARCHAR(150) NULL ,
   `rankin` INT NULL ,
   `fundacion` DATE NULL ,
@@ -176,10 +169,11 @@ ENGINE = InnoDB;
 -- Table `gana`.`edicion`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `gana`.`edicion` (
-  `idedicion` INT NOT NULL ,
+  `idedicion` INT NOT NULL AUTO_INCREMENT ,
   `anio` DATE NULL ,
   `torneo_idtorneo` INT NOT NULL ,
   PRIMARY KEY (`idedicion`) ,
+  INDEX `fk_edicion_torneo1` (`torneo_idtorneo` ASC) ,
   CONSTRAINT `fk_edicion_torneo1`
     FOREIGN KEY (`torneo_idtorneo` )
     REFERENCES `gana`.`torneo` (`idtorneo` )
@@ -187,17 +181,17 @@ CREATE  TABLE IF NOT EXISTS `gana`.`edicion` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE INDEX `fk_edicion_torneo1` ON `gana`.`edicion` (`torneo_idtorneo` ASC) ;
-
 
 -- -----------------------------------------------------
 -- Table `gana`.`participacion`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `gana`.`participacion` (
-  `idparticipacion` INT NOT NULL ,
+  `idparticipacion` INT NOT NULL AUTO_INCREMENT ,
   `equipo_idequipo` INT NOT NULL ,
   `edicion_idedicion` INT NOT NULL ,
   PRIMARY KEY (`idparticipacion`) ,
+  INDEX `fk_participacion_equipo1` (`equipo_idequipo` ASC) ,
+  INDEX `fk_participacion_edicion1` (`edicion_idedicion` ASC) ,
   CONSTRAINT `fk_participacion_equipo1`
     FOREIGN KEY (`equipo_idequipo` )
     REFERENCES `gana`.`equipo` (`idequipo` )
@@ -210,22 +204,21 @@ CREATE  TABLE IF NOT EXISTS `gana`.`participacion` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE INDEX `fk_participacion_equipo1` ON `gana`.`participacion` (`equipo_idequipo` ASC) ;
-
-CREATE INDEX `fk_participacion_edicion1` ON `gana`.`participacion` (`edicion_idedicion` ASC) ;
-
 
 -- -----------------------------------------------------
 -- Table `gana`.`encuentro`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `gana`.`encuentro` (
-  `idencuentro` INT NOT NULL ,
+  `idencuentro` INT NOT NULL AUTO_INCREMENT ,
   `escenario` VARCHAR(150) NULL ,
   `fecha` DATE NULL ,
   `edicion_idedicion` INT NOT NULL ,
   `equipo_idequipo` INT NOT NULL ,
   `equipo_idequipo1` INT NOT NULL ,
   PRIMARY KEY (`idencuentro`) ,
+  INDEX `fk_encuentro_edicion1` (`edicion_idedicion` ASC) ,
+  INDEX `fk_encuentro_equipo1` (`equipo_idequipo` ASC) ,
+  INDEX `fk_encuentro_equipo2` (`equipo_idequipo1` ASC) ,
   CONSTRAINT `fk_encuentro_edicion1`
     FOREIGN KEY (`edicion_idedicion` )
     REFERENCES `gana`.`edicion` (`idedicion` )
@@ -243,23 +236,18 @@ CREATE  TABLE IF NOT EXISTS `gana`.`encuentro` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE INDEX `fk_encuentro_edicion1` ON `gana`.`encuentro` (`edicion_idedicion` ASC) ;
-
-CREATE INDEX `fk_encuentro_equipo1` ON `gana`.`encuentro` (`equipo_idequipo` ASC) ;
-
-CREATE INDEX `fk_encuentro_equipo2` ON `gana`.`encuentro` (`equipo_idequipo1` ASC) ;
-
 
 -- -----------------------------------------------------
 -- Table `gana`.`apuesta`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `gana`.`apuesta` (
-  `idapuesta` INT NOT NULL ,
+  `idapuesta` INT NOT NULL AUTO_INCREMENT ,
   `monto` DECIMAL(20,2) NULL ,
   `usuario_idusuario` INT NOT NULL ,
   `encuentro_idencuentro` INT NOT NULL ,
-  `fantasy` BINARY NOT NULL ,
   PRIMARY KEY (`idapuesta`) ,
+  INDEX `fk_apuesta_usuario1` (`usuario_idusuario` ASC) ,
+  INDEX `fk_apuesta_encuentro1` (`encuentro_idencuentro` ASC) ,
   CONSTRAINT `fk_apuesta_usuario1`
     FOREIGN KEY (`usuario_idusuario` )
     REFERENCES `gana`.`usuario` (`idusuario` )
@@ -272,21 +260,18 @@ CREATE  TABLE IF NOT EXISTS `gana`.`apuesta` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE INDEX `fk_apuesta_usuario1` ON `gana`.`apuesta` (`usuario_idusuario` ASC) ;
-
-CREATE INDEX `fk_apuesta_encuentro1` ON `gana`.`apuesta` (`encuentro_idencuentro` ASC) ;
-
 
 -- -----------------------------------------------------
 -- Table `gana`.`pronostico`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `gana`.`pronostico` (
-  `idpronostico` INT NOT NULL ,
+  `idpronostico` INT NOT NULL AUTO_INCREMENT ,
   `valor` INT NULL ,
   `apuesta_idapuesta` INT NOT NULL ,
   `equipo_idequipo` INT NOT NULL ,
-  `pronosticocol` VARCHAR(45) NOT NULL ,
   PRIMARY KEY (`idpronostico`) ,
+  INDEX `fk_pronostico_apuesta1` (`apuesta_idapuesta` ASC) ,
+  INDEX `fk_pronostico_equipo1` (`equipo_idequipo` ASC) ,
   CONSTRAINT `fk_pronostico_apuesta1`
     FOREIGN KEY (`apuesta_idapuesta` )
     REFERENCES `gana`.`apuesta` (`idapuesta` )
@@ -298,10 +283,6 @@ CREATE  TABLE IF NOT EXISTS `gana`.`pronostico` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
-
-CREATE INDEX `fk_pronostico_apuesta1` ON `gana`.`pronostico` (`apuesta_idapuesta` ASC) ;
-
-CREATE INDEX `fk_pronostico_equipo1` ON `gana`.`pronostico` (`equipo_idequipo` ASC) ;
 
 
 

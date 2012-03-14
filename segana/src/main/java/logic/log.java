@@ -8,8 +8,12 @@ package logic;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Iterator;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -55,12 +59,39 @@ public class log extends HttpServlet {
             out.println("Esta pagina lo redirigira al inicio en 5 segundos <br/> O puede hacer click en el siguiente enlace");
             out.println("para volver al inicio <a href=\"index.jsp\">Inicio</a>");
             
-            Iterator u = myuser.iterator();
-            while(u.hasNext())
+            if(myuser.isEmpty())
             {
-                Usuario m = (Usuario) u.next();
-                out.println("<br/>Nombre: " + m.getNombre() + " Email: " + m.getEmail() + " Password: " + m.getPassword());
+                String dat = request.getParameter("year") + "/" + request.getParameter("month") + "/" + request.getParameter("email");
+                java.util.Date utilDate = null;
+                SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
+                try {
+                    utilDate = formatter.parse(dat);
+                } catch (ParseException ex) {
+                    Logger.getLogger(log.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+                Usuario u = new Usuario(); 
+                u.setNombre(request.getParameter("username"));
+                u.setPassword(request.getParameter("password"));
+                u.setEmail(request.getParameter("email"));
+                u.setFechaNac(utilDate);
+                u.setDireccion(request.getParameter("address"));
+                u.setTarjeta(request.getParameter("tarjeta"));
+                Session session = HibernateUtil.getSessionFactory().openSession();
+                session.beginTransaction();
+                session.save(u);
+                session.getTransaction().commit();   
             }
+            else
+            {
+                Iterator u = myuser.iterator();
+                while(u.hasNext())
+                {
+                    Usuario m = (Usuario) u.next();
+                    out.println("<br/>Nombre: " + m.getNombre() + " Email: " + m.getEmail() + " Password: " + m.getPassword());
+                }
+            }
+            
             
             out.println("</body>");            
             out.println("</html>");            

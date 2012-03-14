@@ -117,7 +117,7 @@ ddsmoothmenu.init({
                         %>
                         Month
                         <%                
-                            out.println("<select name=\"anio\">");
+                            out.println("<select name=\"mes\">");
                             int z = 1;
                             for(int m = 0; m < 12; m++)
                             {
@@ -128,7 +128,7 @@ ddsmoothmenu.init({
                         %>                        
                         Day
                         <%                
-                            out.println("<select name=\"anio\">");
+                            out.println("<select name=\"dia\">");
                             int r = 1;
                             for(int m = 0; m < 31; m++)
                             {
@@ -146,11 +146,19 @@ ddsmoothmenu.init({
                                         
                                     </td>
                                 </tr>
+                                 <tr>
+                                    <td>
+                                        Numero de Tarjeta
+                                    </td>
+                                    <td>
+                                        <input type="text" name="tarjeta" value="" size="25" />
+                                    </td>
+                                </tr>
                                 <tr>
                                     <td>
                                         <input type="submit" value="Register" name="reg" />
                                     </td>
-                                </tr>
+                                </tr>                               
                             </tbody>
                         </table>                                                
                     </form>
