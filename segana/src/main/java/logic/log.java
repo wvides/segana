@@ -8,9 +8,8 @@ package logic;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Iterator;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import segana.Usuario;
 
 /**
  *
@@ -41,10 +41,10 @@ public class log extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
-            filmaker();            
+            List<Usuario>  myuser = filmaker();            
             
-            //response.sendRedirect(response.encodeRedirectURL("index.jsp"));
-            response.setHeader("Refresh", "3, URL=index.js");
+            //response.sendRedirect(response.encodeRedirectURL("index.jsp"));            
+            response.setHeader("Refresh", "3, URL=index.jsp");
             out.println("<html>");
             out.println("<head>");
             out.println("<title>Servlet log</title>");            
@@ -52,6 +52,14 @@ public class log extends HttpServlet {
             out.println("<body>");
             out.println("<h1>Servlet log at " + request.getContextPath() + "</h1>");
             out.println("<br/> requested: " + request.getParameter("username"));
+            
+            Iterator u = myuser.iterator();
+            while(u.hasNext())
+            {
+                Usuario m = (Usuario) u.next();
+                out.println("<br/>" + m.getNombre());
+            }
+            
             out.println("</body>");            
             out.println("</html>");            
         } finally {            
@@ -100,18 +108,13 @@ public class log extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    private void filmaker() {
-//        Session session = null;
-//        session = HibernateUtil.getSessionFactory().getCurrentSession();        
-//         List<Usuario> usuarios = null;
-//         
-//        try 
-//        {            
-//            org.hibernate.Transaction tx = session.beginTransaction();
-//            Query q = session.createQuery ("from Usuario");
-//            usuarios = (List<Usuario>) q.list();
-//        } 
-//        catch (Exception e) 
-//        {                    }
+    private List<Usuario> filmaker() 
+    {        
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        Query q = session.createQuery("FROM Usuario");
+        List<Usuario> resultList = q.list();        
+        session.getTransaction().commit();   
+        return resultList;
     }
 }
