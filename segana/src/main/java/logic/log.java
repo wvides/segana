@@ -44,20 +44,21 @@ public class log extends HttpServlet {
             List<Usuario>  myuser = filmaker();            
             
             //response.sendRedirect(response.encodeRedirectURL("index.jsp"));            
-            response.setHeader("Refresh", "3, URL=index.jsp");
+            response.setHeader("Refresh", "5, URL=index.jsp");
             out.println("<html>");
             out.println("<head>");
             out.println("<title>Servlet log</title>");            
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet log at " + request.getContextPath() + "</h1>");
-            out.println("<br/> requested: " + request.getParameter("username"));
+            //out.println("<br/> requested: " + request.getParameter("username"));
+            out.println("Esta pagina lo redirigira al inicio en 5 segundos");
             
             Iterator u = myuser.iterator();
             while(u.hasNext())
             {
                 Usuario m = (Usuario) u.next();
-                out.println("<br/>" + m.getNombre());
+                out.println("<br/>Nombre: " + m.getNombre() + " Email: " + m.getEmail() + " Password: " + m.getPassword());
             }
             
             out.println("</body>");            
