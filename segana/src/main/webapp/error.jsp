@@ -46,12 +46,7 @@ ddsmoothmenu.init({
 </script>
     </head>
     <%
-        String x = request.getParameter("email");
-        String username=(String) session.getAttribute("namen");
-        if(username!=null)
-        {
-            response.sendRedirect("index.jsp?");
-        }
+        response.setHeader("Refresh", "5, URL=index.jsp");
     %>
     <body>
        
@@ -94,26 +89,9 @@ ddsmoothmenu.init({
             <div id="templatemo_middle">
                 <div id="templatemo_middle_left">
                         <h2><strong>Se gana Login</strong></h2>
-                    <p>Welcome! if you already are a Se Gana user, you can login here.</p>
+                        <p><h3>Error!.</h3></p>
                     
-                    <form name="logg" action="logger" method="POST"><table border="0">
-                            <tbody> 
-                                <tr>
-                                    <td>Email</td>
-                                    <td><input type="text" name="email" value="" size="50" /></td>
-                                </tr>                                                               
-                                <tr>
-                                    <td>Password</td>
-                                    <td><input type="password" name="password" value="" size="25" /></td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <input type="submit" value="Login" />
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>                                                
-                    </form>
+
                     
                 </div>
                 <div id="slider-wrapper">

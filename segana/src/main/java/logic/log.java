@@ -84,12 +84,7 @@ public class log extends HttpServlet {
             }
             else
             {
-                Iterator u = myuser.iterator();
-                while(u.hasNext())
-                {
-                    Usuario m = (Usuario) u.next();
-                    out.println("<br/>Nombre: " + m.getNombre() + " Email: " + m.getEmail() + " Password: " + m.getPassword());
-                }
+                response.sendRedirect("error.jsp?err=0");                
             }
             
             

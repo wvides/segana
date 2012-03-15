@@ -6,11 +6,16 @@ package logic;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import segana.Usuario;
 
 /**
  *
@@ -37,16 +42,32 @@ public class logger extends HttpServlet {
             /*
              * TODO output your page here. You may use following sample code.
              */            
-            out.println("I have: " + request.getParameter("email"));
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<%session.setAttribute( \"namen\", "+request.getParameter("email")+" );%>");
-            out.println("<title>Servlet logger</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet logger at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            HttpSession sess = request.getSession(true);
+            
+            List<Usuario> u = null;
+            u = validate(request.getParameter("email"),request.getParameter("password"));
+            
+            if(u != null)
+            {
+                Usuario m = new Usuario();
+                try
+                {
+                    m = u.get(0);
+                }
+                catch(Exception mx)
+                {
+                    response.sendRedirect("error.jsp?err=1");
+                }                
+                
+                sess.setAttribute("namen", m.getEmail());
+                response.setHeader("Refresh", "0, URL=index.jsp");
+            }
+            else
+            {
+                response.sendRedirect("error.jsp?err=1");
+            }
+            
+                        
         } finally {            
             out.close();
         }
@@ -92,4 +113,15 @@ public class logger extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    private List<Usuario> validate(String email, String password) 
+    {
+        
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        Query q = session.createQuery("FROM Usuario WHERE email LIKE '" + email + "' AND password LIKE '" + password + "'");
+        List<Usuario> resultList = q.list();        
+        session.getTransaction().commit();   
+        return resultList;
+    }
 }
