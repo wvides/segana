@@ -84,6 +84,8 @@ ddsmoothmenu.init({
                                     <li><a href="register.jsp">Sign up (Create account)</a></li>                                
                             </ul>
                         </li>
+                        
+                        
                         <li><a href="portfolio.html"><span></span>About Us</a>
                             <ul>
                                 <li><a href="submenupage.html">About "Se Gana"</a></li>
@@ -95,7 +97,16 @@ ddsmoothmenu.init({
                                     <li><a href="submenupage.html">IRC Channel</a></li>
                                     <li><a href="submenupage.html">Via Email</a></li>                                
                             </ul>
+                            
+                            
                         </li>
+                        <li><a href="blog.html"><span></span>Cuenta</a>
+                            <ul>
+                                    <li><a href="addCard.jsp">Agregar Tarjeta</a></li>
+                                   <!--<li><a href="register.jsp">Sign up (Create account)</a></li>  -->                               
+                            </ul>
+                        </li>
+                        
                     </ul>
                     <br style="clear: left" />
                 </div> <!-- end of menu -->
