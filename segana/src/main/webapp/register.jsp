@@ -94,23 +94,79 @@ ddsmoothmenu.init({
             <div id="templatemo_middle">
                 <div id="templatemo_middle_left">
                         <h2><strong>Se gana Login</strong></h2>
-                    <p>Welcome! if you already are a Se Gana user, you can login here.</p>
+                    <p>You can create a login account here, or login with your account.</p>
                     
-                    <form name="logg" action="index.jsp" method="POST"><table border="0">
-                            <tbody> 
+                    <form name="login" action="log" method="POST"><table border="0">
+                            <tbody>
                                 <tr>
-                                    <td>Email</td>
-                                    <td><input type="text" name="email" value="" size="50" /></td>
-                                </tr>                                                               
+                                    <td>User Name</td>
+                                    <td><input type="text" name="username" value="" size="40" /></td>
+                                </tr>
                                 <tr>
                                     <td>Password</td>
                                     <td><input type="password" name="password" value="" size="25" /></td>
                                 </tr>
                                 <tr>
-                                    <td>
-                                        <input type="submit" value="Login" />
+                                    <td>Email</td>
+                                    <td><input type="text" name="email" value="" size="50" /></td>
+                                </tr>
+                                <tr>
+                                    <td>Birth Date: </td>
+                                    <td>Year
+                        <%                
+                            out.println(" <select name=\"anio\">");
+                            int t = 1932;
+                            for(int m = 0; m < 80; m++)
+                            {
+                                out.println("<option>"+t+"</option>");
+                                t++;
+                            }
+                            out.println("</select> ");
+                        %>
+                        Month
+                        <%                
+                            out.println("<select name=\"mes\">");
+                            int z = 1;
+                            for(int m = 0; m < 12; m++)
+                            {
+                                out.println(" <option>"+z+"</option>");
+                                z++;
+                            }
+                            out.println("</select> ");
+                        %>                        
+                        Day
+                        <%                
+                            out.println("<select name=\"dia\">");
+                            int r = 1;
+                            for(int m = 0; m < 31; m++)
+                            {
+                                out.println(" <option>"+r+"</option>");
+                                r++;
+                            }
+                            out.println("</select> ");
+                        %>
                                     </td>
                                 </tr>
+                                <tr>
+                                    <td>Address</td>
+                                    <td>
+                                        <input type="text" name="address" value="" size="60" />
+                                        
+                                    </td>
+                                </tr>
+                                 <tr>
+                                    <td>
+                                        Numero de Tarjeta
+                                    </td>
+                                    <td>
+                                        <input type="text" name="tarjeta" value="" size="25" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="submit" value="Register" name="reg" />
+                                    </td>
+                                </tr>                               
                             </tbody>
                         </table>                                                
                     </form>

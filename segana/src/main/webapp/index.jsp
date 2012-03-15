@@ -45,7 +45,25 @@ ddsmoothmenu.init({
 
 </script>
     </head>
-    <body>
+    <%
+        String x = request.getParameter("email");
+        String username=(String) session.getAttribute("namen");
+              
+        if(username==null && x!=null)
+        {
+            session.setAttribute("namen", x);                       
+            out.println("<p style=\"text-align:center;\"><a href=\"#\" >"+x+"</a> , <a href=\"logout.jsp\" >Logout</a></p> , ");
+        }
+        else if(x!=null)
+        {
+            out.println("<p style=\"text-align:center;\"><a href=\"#\" >"+x+"</a> , <a href=\"logout.jsp\" >Logout</a></p> , ");
+        }
+        else if(username!=null)
+        {
+            out.println("<p style=\"text-align:center;\"><a href=\"#\" >"+ username +"</a> , <a href=\"logout.jsp\" >Logout</a></p> ");
+        }
+    %>
+    <body>        
         
         <div id="templatemo_wrapper">
 
@@ -63,7 +81,7 @@ ddsmoothmenu.init({
                         <li><a href="blog.html"><span></span>Login</a>
                             <ul>
                                     <li><a href="login.jsp">Sign in (Have account)</a></li>
-                                    <li><a href="login.jsp">Sign up (Create account)</a></li>                                
+                                    <li><a href="register.jsp">Sign up (Create account)</a></li>                                
                             </ul>
                         </li>
                         <li><a href="portfolio.html"><span></span>About Us</a>
