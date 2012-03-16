@@ -48,10 +48,16 @@ ddsmoothmenu.init({
     <%
         //String x = request.getParameter("email");
         String username=(String) session.getAttribute("namen");
-      /*  if(username!=null)
+        
+        if(username!=null)
+        {
+            out.println("<p style=\"text-align:center;\"><a href=\"#\" >"+ username +"</a> , <a href=\"logout.jsp\" >Logout</a></p> ");
+            
+       }
+        if(username==null)
         {
             response.sendRedirect("index.jsp");
-        }*/
+        }
     %>
     <body>
        
@@ -96,7 +102,7 @@ ddsmoothmenu.init({
                         <h2><strong>Se gana Login</strong></h2>
                     <p>You can create a login account here, or login with your account.</p>
                     
-                    <form name="login" action="log" method="POST"><table border="0">
+                    <form name="addc" action="addcard" method="POST"><table border="0">
                             <tbody>
                                 <tr>
                                     <td>Numero De Tarjeta</td>
@@ -140,7 +146,8 @@ ddsmoothmenu.init({
                             out.println("</select> ");
                         %>                        
                         
-                                    </td>
+                         </td>
+                         <td><input type="hidden" name="username" value=<% out.println(username);%>> </td>
                                     <td>
                                         <input type="submit" value="Agregar " name="addCard" />
                                     </td>
