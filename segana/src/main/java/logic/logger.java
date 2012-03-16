@@ -7,6 +7,7 @@ package logic;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
+import java.util.Set;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.hibernate.Query;
 import org.hibernate.Session;
-import segana.Usuario;
+import segana.*;
 
 /**
  *
@@ -49,7 +50,7 @@ public class logger extends HttpServlet {
             
             if(u != null)
             {
-                Usuario m = new Usuario();
+                Usuario m = new Usuario();                
                 try
                 {
                     m = u.get(0);
