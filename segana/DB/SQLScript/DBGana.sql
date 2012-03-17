@@ -289,3 +289,11 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+insert into rol(descripcion) values('admin');
+insert into rol(descripcion) values('moderador');
+insert into rol(descripcion) values('corredor');
+insert into rol(descripcion) values('cliente');
+insert into usuario(nombre,email,fecha_nac,password,direccion,tarjeta) values('admin','admin@admin.com','1985/1/1', '123','guatemala','00000');
+insert into rolusuario(usuario_idusuario,rol_idrol) values(1,1);
+
