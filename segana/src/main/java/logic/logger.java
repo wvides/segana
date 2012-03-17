@@ -71,7 +71,7 @@ public class logger extends HttpServlet {
                     Rolusuario um =  (Rolusuario) k.next();
                     if(um.getRol().getDescripcion().equalsIgnoreCase("admin"))
                     {
-                        sess.setAttribute("admin", true);
+                        sess.setAttribute("admin", true);                        
                     }
                     else if(um.getRol().getDescripcion().equalsIgnoreCase("moderador"))
                     {
@@ -82,9 +82,17 @@ public class logger extends HttpServlet {
                         sess.setAttribute("corredor", true);
                     }
                 }
-                
                 sess.setAttribute("namen", m.getEmail());
-                response.setHeader("Refresh", "0, URL=index.jsp");
+                if(sess.getAttribute("admin") != null)
+                {
+                    response.setHeader("Refresh", "0, URL=admin.jsp");
+                }
+                else
+                {
+                    response.setHeader("Refresh", "0, URL=index.jsp");
+                }                
+                
+                
             }
             else
             {
