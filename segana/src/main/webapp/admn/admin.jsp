@@ -115,8 +115,7 @@ ddsmoothmenu.init({
             <div id="templatemo_middle">
                 <div id="templatemo_middle_left">
                         <h2>Administration <strong>Se gana Gambling</strong></h2>
-                    <p></p>
-                    <a href="#" class="learn_more"></a>
+                    <p></p>                    
                 </div>                
                 <div class="cleaner"></div>
             </div> <!-- end of middle -->
@@ -141,7 +140,7 @@ ddsmoothmenu.init({
                             <form action="#" method="get">
                             <input type="text" value="Search" name="keyword" id="keyword" title="keyword" onfocus="clearText(this)" onblur="clearText(this)" class="txt_field" />
                             <input type="submit" name="Search" value="" alt="Search" id="searchbutton" title="Search" class="sub_btn"  />
-                            </form>
+                            </form>1
                         </div>
 
                         <div class="sb_box">

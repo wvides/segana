@@ -13,7 +13,7 @@
               
         if(username!=null)
         {
-            if(username.equals("admin@admin.com"))
+            if(session.getAttribute("admin")!=null)
             {
                 response.sendRedirect("admin.jsp");
                 out.println("<p style=\"text-align:center;\"><a href=\"#\" >"+ username +"</a> , <a href=\"logout.jsp\" >Logout</a></p> ");

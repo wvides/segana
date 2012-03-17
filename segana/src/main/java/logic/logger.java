@@ -6,6 +6,8 @@ package logic;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import javax.servlet.ServletException;
@@ -16,7 +18,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.hibernate.Query;
 import org.hibernate.Session;
-import segana.*;
+import segana.Rol;
+import segana.Rolusuario;
+import segana.Usuario;
 
 /**
  *
@@ -59,6 +63,25 @@ public class logger extends HttpServlet {
                 {
                     response.sendRedirect("error.jsp?err=1");
                 }                
+                
+                Set<Rolusuario> ad = m.getRolusuarios();
+                Iterator k = ad.iterator();
+                while(k.hasNext())
+                {
+                    Rolusuario um =  (Rolusuario) k.next();
+                    if(um.getRol().getDescripcion().equalsIgnoreCase("admin"))
+                    {
+                        sess.setAttribute("admin", true);
+                    }
+                    else if(um.getRol().getDescripcion().equalsIgnoreCase("moderador"))
+                    {
+                        sess.setAttribute("moderador", true);
+                    }
+                    else if(um.getRol().getDescripcion().equalsIgnoreCase("corredor"))
+                    {
+                        sess.setAttribute("corredor", true);
+                    }
+                }
                 
                 sess.setAttribute("namen", m.getEmail());
                 response.setHeader("Refresh", "0, URL=index.jsp");
