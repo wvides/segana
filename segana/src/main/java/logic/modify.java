@@ -6,11 +6,17 @@ package logic;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Iterator;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import segana.Rol;
+import segana.Usuario;
 
 /**
  *
@@ -37,12 +43,22 @@ public class modify extends HttpServlet {
             /*
              * TODO output your page here. You may use following sample code.
              */
+            List<Usuario> myu = getusers();
+            Iterator mu = myu.iterator();            
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet modify</title>");            
+            out.println("<title>Modify Users Access</title>");            
+            out.println("<h1>Modify Users Access</h1>");
             out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet modify at " + request.getContextPath() + "</h1>");
+            out.println("<body>");            
+            int count = 1;
+            while(mu.hasNext())
+            {
+                Usuario xd = (Usuario) mu.next();
+                out.println("<br/><input type=\"checkbox\" value=\"OFF\" />" + " " + xd.getNombre() + " , " + xd.getEmail() + " , ");   
+                count++;
+            }            
+            out.println("<form action=\"mod\"> <input type=\"submit\" value=\"Modificar roles\" /></form>");
             out.println("</body>");
             out.println("</html>");
         } finally {            
@@ -90,4 +106,14 @@ public class modify extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    private List<Usuario> getusers() 
+    {                
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        Query q = session.createQuery("FROM Usuario");
+        List<Usuario> resultList = q.list();        
+        session.getTransaction().commit();   
+        return resultList;    
+    }
 }
