@@ -49,6 +49,11 @@ ddsmoothmenu.init({
         String x = request.getParameter("email");
         String username=(String) session.getAttribute("namen");
               
+        if(session.getAttribute("admin")==null)
+        {
+            response.sendRedirect("admin.jsp");
+            out.println("<p style=\"text-align:center;\"><a href=\"#\" >"+ username +"</a> , <a href=\"logout.jsp\" >Logout</a></p> ");
+        }
         if(username==null && x!=null)
         {
             session.setAttribute("namen", x);                       
@@ -128,7 +133,11 @@ ddsmoothmenu.init({
                         <div class="meta">Posted in <a href="#">Illustrations</a>, <a href="#">Graphics</a> | Date: June 24, 2048 | <a href="#">136 comments</a></div>
 
                             
-                            <p>Information about how to play here...</p>
+                            <p>
+                            <form action="modify" method="POST">
+                                <input type="submit" value="Users" />  
+                            </form>
+                            </p>
                             <a href="#" class="more float_r"></a>
                             <div class="cleaner"></div>
                                         </div>
@@ -140,13 +149,15 @@ ddsmoothmenu.init({
                             <form action="#" method="get">
                             <input type="text" value="Search" name="keyword" id="keyword" title="keyword" onfocus="clearText(this)" onblur="clearText(this)" class="txt_field" />
                             <input type="submit" name="Search" value="" alt="Search" id="searchbutton" title="Search" class="sub_btn"  />
-                            </form>1
+                            </form>
+                            
+                            
                         </div>
 
                         <div class="sb_box">
                             <h3>Categories</h3>
                             <ul class="templatemo_list">
-                                <li><a href="#">System Users</a></li>
+                                <li><a href="modify">System Users</a></li>
                                 <li><a href="#">Show Modules</a></li>
                                 <li><a href="#">-</a></li>
                                 <li><a href="#">-</a></li>
