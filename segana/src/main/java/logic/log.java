@@ -10,8 +10,11 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.AbstractSet;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -21,6 +24,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.omg.CORBA.ULongLongSeqHelper;
+import segana.Rol;
+import segana.Rolusuario;
 import segana.Usuario;
 
 /**
@@ -48,7 +54,6 @@ public class log extends HttpServlet {
             
             List<Usuario>  myuser = validateuser(request.getParameter("email"));
             
-            response.setHeader("Refresh", "5, URL=index.jsp");
             out.println("<html>");
             out.println("<head>");
             out.println("<title>Servlet log</title>");            
@@ -58,7 +63,8 @@ public class log extends HttpServlet {
             //out.println("<br/> requested: " + request.getParameter("username"));
             out.println("Esta pagina lo redirigira al inicio en 5 segundos <br/> O puede hacer click en el siguiente enlace");
             out.println("para volver al inicio <a href=\"index.jsp\">Inicio</a>");
-            
+            Rol myrol = new Rol();
+            Usuario tmpo = new Usuario();
             if(myuser.isEmpty())
             {
                 String dat = request.getParameter("anio") + "/" + request.getParameter("mes") + "/" + request.getParameter("dia");
@@ -76,16 +82,31 @@ public class log extends HttpServlet {
                 u.setEmail(request.getParameter("email"));
                 u.setFechaNac(utilDate);
                 u.setDireccion(request.getParameter("address"));
-                u.setTarjeta(request.getParameter("tarjeta"));
+                u.setTarjeta(request.getParameter("tarjeta"));                                    
+                
+                myrol = retrieverol("cliente");
+                
+                
                 Session session = HibernateUtil.getSessionFactory().openSession();
                 session.beginTransaction();
                 session.save(u);
                 session.getTransaction().commit();   
+                tmpo = retrieveuser(u.getEmail());
+                
+                Rolusuario ux = new Rolusuario();
+                ux.setRol(myrol);
+                ux.setUsuario(tmpo);
+                session.beginTransaction();
+                session.getTransaction();
+                session.save(ux);
+                session.getTransaction().commit();
+                
             }
             else
             {
                 response.sendRedirect("error.jsp?err=0");                
             }
+            response.setHeader("Refresh", "5, URL=index.jsp");
             
             
             out.println("</body>");            
@@ -154,4 +175,24 @@ public class log extends HttpServlet {
         session.getTransaction().commit();   
         return resultList;
     }
+
+    private Rol retrieverol(String cliente) {
+        
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        Query q = session.createQuery("FROM Rol where descripcion like '"+cliente+"'");
+        List<Rol> resultList = q.list();        
+        session.getTransaction().commit();   
+        return resultList.get(0);
+    }
+
+    private Usuario retrieveuser(String email) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        Query q = session.createQuery("FROM Usuario where email like '"+email+"'");
+        List<Usuario> resultList = q.list();        
+        session.getTransaction().commit();   
+        return resultList.get(0);
+    }
+
 }
