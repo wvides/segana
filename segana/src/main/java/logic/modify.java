@@ -64,12 +64,22 @@ public class modify extends HttpServlet {
                 Rol myrol = getmyrol(xd.getIdusuario());
                 
                 out.println("<td><input type=\"checkbox\" name=\""+xd.getIdusuario()+"\" value=\"OFF\" /></td>" + "<td>" + xd.getNombre() 
-                        + "</td> <td> " + xd.getEmail() + "</td><td>" + myrol.getDescripcion() + "</td>" );                   
+                        + "</td> <td> " + xd.getEmail() + "</td><td>" + myrol.getDescripcion() + "</td>" );                                  
                 count++;
                 out.println("</tr>");
-            }            
+            }
+             out.println("<td>Administrator <input type=\"checkbox\" name=\"admin\" value=\"ON\" /></td>"
+                    + "<td>Moderator <input type=\"checkbox\" name=\"moderator\" value=\"ON\" /></td>"
+                    + "<td>Corredor<input type=\"checkbox\" name=\"corred\" value=\"ON\" /></td>"
+                    + "<td>Client <input type=\"checkbox\" name=\"user\" value=\"ON\" /></td>");
+            
             out.println("</tbody></table>");
-            out.println("<input type=\"submit\" value=\"Modificar roles\" /></form>");
+            
+            out.println(""
+                    + "<br/>"                    
+                    +"<input type=\"submit\" value=\"Modificar roles\" />"
+                    + "</form>");
+            
             out.println("</body>");
             out.println("</html>");
         } finally {            

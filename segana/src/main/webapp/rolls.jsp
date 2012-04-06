@@ -143,8 +143,7 @@ ddsmoothmenu.init({
                             <form action="#" method="get">
                             <input type="text" value="Search" name="keyword" id="keyword" title="keyword" onfocus="clearText(this)" onblur="clearText(this)" class="txt_field" />
                             <input type="submit" name="Search" value="" alt="Search" id="searchbutton" title="Search" class="sub_btn"  />
-                            </form>1
-                            
+                            </form>1                            
                         </div>
 
                         <div class="sb_box">
