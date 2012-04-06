@@ -23,8 +23,8 @@ import segana.Usuario;
  *
  * @author Omar
  */
-@WebServlet(name = "modify", urlPatterns = {"/modify"})
-public class modify extends HttpServlet {
+@WebServlet(name = "mod", urlPatterns = {"/mod"})
+public class mod extends HttpServlet {
 
     /**
      * Processes requests for both HTTP
@@ -44,32 +44,32 @@ public class modify extends HttpServlet {
             /*
              * TODO output your page here. You may use following sample code.
              */
-            List<Usuario> myu = getusers();
-            Iterator mu = myu.iterator();            
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Modify Users Access</title>");            
-            out.println("<h1>Modify Users Access</h1>");
+            out.println("<title>Servlet mod</title>");            
             out.println("</head>");
-            out.println("<body>");            
+            out.println("<body>");
+            List<Usuario> myu = getusers();
+            Iterator mu = myu.iterator();    
             int count = 1;
-            out.println("<form action=\"mod\"> <table border=\"1\"><tbody>");
-            out.println("<tr>");
-            out.println("<tr><td>Modificar</td><td>Usuario</td><td>Correo</td><td>Rol</td></tr>");
-            out.println("</tr>");
             while(mu.hasNext())
-            {                
-                out.println("<tr>");
+            {                                
                 Usuario xd = (Usuario) mu.next();
                 Rol myrol = getmyrol(xd.getIdusuario());
-                
-                out.println("<td><input type=\"checkbox\" name=\""+xd.getIdusuario()+"\" value=\"OFF\" /></td>" + "<td>" + xd.getNombre() 
-                        + "</td> <td> " + xd.getEmail() + "</td><td>" + myrol.getDescripcion() + "</td>" );                   
+                int requested = xd.getIdusuario();
+                if(request.getParameter(""+requested) != null)
+                {
+                    out.println("Not Null");
+                }       
+                else
+                {
+                    out.println(request.getParameter(""+requested) + " " + requested);
+                }
                 count++;
-                out.println("</tr>");
-            }            
-            out.println("</tbody></table>");
-            out.println("<input type=\"submit\" value=\"Modificar roles\" /></form>");
+                out.println("<br />");
+            }  
+            
+            
             out.println("</body>");
             out.println("</html>");
         } finally {            
