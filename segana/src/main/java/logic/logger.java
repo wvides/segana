@@ -48,7 +48,7 @@ public class logger extends HttpServlet {
              * TODO output your page here. You may use following sample code.
              */            
             HttpSession sess = request.getSession(true);
-            
+            //comment
             List<Usuario> u = null;
             u = validate(request.getParameter("email"),request.getParameter("password"));
             
