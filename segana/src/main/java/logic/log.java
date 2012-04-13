@@ -51,7 +51,7 @@ public class log extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {                        
-            
+            //comentario
             List<Usuario>  myuser = validateuser(request.getParameter("email"));
             
             out.println("<html>");
