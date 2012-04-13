@@ -109,6 +109,9 @@ ddsmoothmenu.init({
                     <p>You can create a login account here, or login with your account.</p>
                     
                     <form name="addc" action="addcard" method="POST"><table border="0">
+                            
+                            <!--  aqui va la tabla de datos    -->
+                            
                             <tbody>
                                 <tr>
                                     <td>Numero De Tarjeta</td>
