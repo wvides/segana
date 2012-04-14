@@ -56,7 +56,7 @@ public class addBet extends HttpServlet {
                 {
                     u=lu.get(0);
                 
-                        
+                       System.out.println("PRueba");
             
             
          
