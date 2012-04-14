@@ -135,7 +135,7 @@ public class addBet extends HttpServlet {
         } finally {            
             out.close();
         }
-        
+        response.setHeader("Refresh", "1, URL=index.jsp");
     }
     
      private List<Usuario> validate(String email) 
