@@ -66,7 +66,8 @@ public class addBet extends HttpServlet {
                     int i=0;
                     while(i<d.ES.size())
                     {
-                                               
+                              
+                        if(request.getParameter(d.ES.get(i).KeyEncuentro)!=null)
                         if(request.getParameter(d.ES.get(i).KeyEncuentro).equals("ON"))
                         {
                             a=new Apuesta();
@@ -77,14 +78,20 @@ public class addBet extends HttpServlet {
                             Session session = HibernateUtil.getSessionFactory().openSession();
                             session.beginTransaction();
                             session.saveOrUpdate(a); 
+                            
                             session.getTransaction().commit();                            
+                            
                            
+                            session.beginTransaction();
+                            Query q = session.createQuery("FROM Apuesta WHERE  usuario_idusuario="+u.getIdusuario()+" and encuentro_idencuentro="+a.getEncuentro().getIdencuentro());
+                            List<Apuesta> resultList = q.list();        
+                            a=resultList.get(0);
+                            session.getTransaction().commit();   
                             
                             
                             Pronostico p1=new Pronostico();
                             p1.setEquipo(d.ES.get(i).encuentro.getEquipoByEquipoIdequipo());
-                            p1.setValor(Integer.parseInt(request.getParameter("E1"+d.ES.get(i).encuentro.getIdencuentro())));
-                            
+                            p1.setValor(Integer.parseInt(request.getParameter("E1"+d.ES.get(i).encuentro.getIdencuentro())));                            
                             p1.setApuesta(a);
                             
                             
@@ -128,6 +135,7 @@ public class addBet extends HttpServlet {
         } finally {            
             out.close();
         }
+        
     }
     
      private List<Usuario> validate(String email) 
