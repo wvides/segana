@@ -74,10 +74,16 @@ public class addBet extends HttpServlet {
                             a.setMonto(BigDecimal.valueOf(Double.parseDouble(request.getParameter(d.ES.get(i).encuentro.getIdencuentro()+"Monto"))));
                             a.setUsuario(u);
                             
+                            Session session = HibernateUtil.getSessionFactory().openSession();
+                            session.beginTransaction();
+                            session.saveOrUpdate(a); 
+                            session.getTransaction().commit();                            
+                           
+                            
+                            
                             Pronostico p1=new Pronostico();
                             p1.setEquipo(d.ES.get(i).encuentro.getEquipoByEquipoIdequipo());
                             p1.setValor(Integer.parseInt(request.getParameter("E1"+d.ES.get(i).encuentro.getIdencuentro())));
-                            
                             
                             p1.setApuesta(a);
                             
@@ -87,12 +93,20 @@ public class addBet extends HttpServlet {
                             p2.setValor(Integer.parseInt(request.getParameter("E2"+d.ES.get(i).encuentro.getIdencuentro())));
                             p2.setApuesta(a);
                             
-                            Session session = HibernateUtil.getSessionFactory().openSession();
+                            
+                            
+                            
+                            session = HibernateUtil.getSessionFactory().openSession();
                             session.beginTransaction();
-                            session.save(a);
-                            session.save(p1);
-                            session.save(p2);
+                            session.save(p1);                 
                             session.getTransaction().commit();
+                            
+                            session = HibernateUtil.getSessionFactory().openSession();
+                            session.beginTransaction();
+                            session.save(p2);                 
+                            session.getTransaction().commit();
+                            
+                            
                             
                             //Pronostico
                             
