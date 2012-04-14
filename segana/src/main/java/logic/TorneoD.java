@@ -4,6 +4,7 @@
  */
 package logic;
 
+import java.util.ArrayList;
 import java.util.List;
 import segana.Rolusuario;
 import org.hibernate.Query;
@@ -16,7 +17,7 @@ import segana.Equipo;
  * @author eddytrex
  */
 public class TorneoD {
-    public List <encuentrosSet> ES;
+    public List <encuentrosSet> ES=new ArrayList<encuentrosSet>();
     
     public List<Encuentro> getTorneo()
     {
@@ -31,8 +32,9 @@ public class TorneoD {
         {
             encuentrosSet temp=new encuentrosSet();
             temp.encuentro=resultList.get(i);
-            temp.KeyEncuentro=resultList.get(i).getIdencuentro()+"id";
+            temp.KeyEncuentro="id"+resultList.get(i).getIdencuentro();
             
+            ES.add(temp);
         
             i++;
         }

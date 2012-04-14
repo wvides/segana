@@ -132,17 +132,17 @@ ddsmoothmenu.init({
                                      {
                                         
                                         out.println("<tr>");
-                                        out.println("<td>Administrator <input type=\"checkbox\" name=\""+nuevaLista.get(i).getIdencuentro()+"id"+" \" value=\"ON\" /></td>");
-                                        out.println("<td>"+nuevaLista.get(i).getEdicion()+"</td>");
+                                        out.println("<td><input type=\"checkbox\" name=\""+"id"+nuevaLista.get(i).getIdencuentro()+"\" value=\"ON\" /></td>");
+                                        out.println("<td>"+nuevaLista.get(i).getEscenario()+"</td>");
                                         
-                                        out.println("<td>"+nuevaLista.get(i).getEquipoByEquipoIdequipo().getNombre()+"</td>");                                        
-                                        out.println("<td>"+"<input type=\"text\" name=\""+nuevaLista.get(i).getIdencuentro()+"E1"+"\" value=\"\" size=\"40\" />"+"</td>");
+                                        out.println("<td>Marcador:"+nuevaLista.get(i).getEquipoByEquipoIdequipo().getNombre()+"</td>");                                        
+                                        out.println("<td>"+"<input type=\"text\" name=\""+"E1"+nuevaLista.get(i).getIdencuentro()+"\" value=\"\" size=\"3\" />"+"</td>");
                                         
                                         out.println("<td>"+nuevaLista.get(i).getEquipoByEquipoIdequipo1().getNombre()+"</td>");
-                                        out.println("<td>"+"<input type=\"text\" name=\""+nuevaLista.get(i).getIdencuentro()+"E2"+"\" value=\"\" size=\"40\" />"+"</td>");
+                                        out.println("<td>"+"<input type=\"text\" name=\""+"E2"+nuevaLista.get(i).getIdencuentro()+"\" value=\"\" size=\"3\" />"+"</td>");
                                         
                                         
-                                        out.println("<td>"+"<input type=\"text\" name=\""+nuevaLista.get(i).getIdencuentro()+"Monto"+"\" value=\"\" size=\"40\" />"+"</td>");
+                                        out.println("<td>Apuesta"+"<input type=\"text\" name=\""+nuevaLista.get(i).getIdencuentro()+"Monto"+"\" value=\"\" size=\"3\" />"+"</td>");
                                         
                                         out.println("<td>"+nuevaLista.get(i).getFecha()+"</td>");
                                         out.println("</tr>");
@@ -165,27 +165,7 @@ ddsmoothmenu.init({
                     </form>
                     
                 </div>
-                <div id="slider-wrapper">
-
-                    <div id="slider" class="nivoSlider">
-                        <img src="images/slider/01.jpg" alt="Slider 01" />
-                        <img src="images/slider/02.jpg" alt="Slider 02" />
-                        <img src="images/slider/03.jpg" alt="Slider 03" />
-                        <img src="images/slider/04.jpg" alt="Slider 04" />
-                        <img src="images/slider/05.jpg" alt="Slider 05" />                        
-                        <img src="images/slider/06.jpg" alt="Slider 06" />
-                        <img src="images/slider/07.jpg" alt="Slider 07" />
-                        <img src="images/slider/08.jpg" alt="Slider 08" />
-                        <img src="images/slider/09.jpg" alt="Slider 09" />
-                        <img src="images/slider/10.jpg" alt="Slider 10" />
-                        <img src="images/slider/11.jpg" alt="Slider 11" />
-                        <img src="images/slider/12.jpg" alt="Slider 12" />                        
-                        <img src="images/slider/14.jpg" alt="Slider 14" />
-                        <img src="images/slider/15.jpg" alt="Slider 15" />
-                        <img src="images/slider/16.jpg" alt="Slider 16" />
-                    </div>
-
-                </div>
+                
                     <script type="text/javascript" src="js/jquery-1.4.3.min.js"></script>
                     <script type="text/javascript" src="js/jquery.nivo.slider.js"></script>
                     <script type="text/javascript">
