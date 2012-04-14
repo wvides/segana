@@ -4,6 +4,9 @@
     Author     : eddytrex
 --%>
 
+<%@page import="segana.Encuentro"%>
+<%@page import="java.util.List"%>
+<%@page import="logic.TorneoD"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
    "http://www.w3.org/TR/html4/loose.dtd">
@@ -108,57 +111,53 @@ ddsmoothmenu.init({
                         <h2><strong>Se gana Login</strong></h2>
                     <p>You can create a login account here, or login with your account.</p>
                     
-                    <form name="addc" action="addcard" method="POST"><table border="0">
-                            
+                    <form name="addc" action="addBet" method="POST"><table border="0">
+                           
                             <!--  aqui va la tabla de datos    -->
                             
                             <tbody>
                                 <tr>
-                                    <td>Numero De Tarjeta</td>
-                                    <td><input type="text" name="notarjeta" value="" size="40" /></td>
+                                   <!-- <td>Numero De Tarjeta</td>
+                                    <td><input type="text" name="notarjeta" value="" size="40" /></td>-->
                                 </tr>
                                 
-                                <tr>
-                                    <td>Tipo de Tarjeta </td>
-                                 </tr>   
-                                 <tr>
-                                    <td> <input type="radio" style="left: 709px" name="typeCard" value="Visa">  Visa </td>
-                                  </tr>
-                                  <tr>
-                                    <td> <input type="radio" style="left: 709px" name="typeCard" value="MCard"> Master Card </td>
-                                  <tr>
-                                    <td> <input type="radio" style="left: 709px" name="typeCard" value="AExpress">  American Expres </td>
-                                </tr>
+                                <%
                                 
-                                <tr>
-                                    <td>Fecha de expiración </td>
-                                    <td>Year
-                        <%                
-                            out.println(" <select name=\"anio\">");
-                            int t =2012;
-                            for(int m = 0; m < 10; m++)
-                            {
-                                out.println("<option>"+t+"</option>");
-                                t++;
-                            }
-                            out.println("</select> ");
-                        %>
-                        Month
-                        <%                
-                            out.println("<select name=\"mes\">");
-                            int z = 1;
-                            for(int m = 0; m < 12; m++)
-                            {
-                                out.println(" <option>"+z+"</option>");
-                                z++;
-                            }
-                            out.println("</select> ");
-                        %>                        
-                        
-                         </td>
+                                    TorneoD nuevo=new TorneoD();
+                                    List<Encuentro> nuevaLista;
+                                    nuevaLista=nuevo.getTorneo();
+                                    int i=0;
+                                    
+                                    while(i<nuevaLista.size())
+                                     {
+                                        
+                                        out.println("<tr>");
+                                        out.println("<td>Administrator <input type=\"checkbox\" name=\""+nuevaLista.get(i).getIdencuentro()+"id"+" \" value=\"ON\" /></td>");
+                                        out.println("<td>"+nuevaLista.get(i).getEdicion()+"</td>");
+                                        
+                                        out.println("<td>"+nuevaLista.get(i).getEquipoByEquipoIdequipo().getNombre()+"</td>");                                        
+                                        out.println("<td>"+"<input type=\"text\" name=\""+nuevaLista.get(i).getIdencuentro()+"E1"+"\" value=\"\" size=\"40\" />"+"</td>");
+                                        
+                                        out.println("<td>"+nuevaLista.get(i).getEquipoByEquipoIdequipo1().getNombre()+"</td>");
+                                        out.println("<td>"+"<input type=\"text\" name=\""+nuevaLista.get(i).getIdencuentro()+"E2"+"\" value=\"\" size=\"40\" />"+"</td>");
+                                        
+                                        
+                                        out.println("<td>"+"<input type=\"text\" name=\""+nuevaLista.get(i).getIdencuentro()+"Monto"+"\" value=\"\" size=\"40\" />"+"</td>");
+                                        
+                                        out.println("<td>"+nuevaLista.get(i).getFecha()+"</td>");
+                                        out.println("</tr>");
+                                        
+                                        
+                                        
+                                        i++;
+                                     }
+                                    
+                                    
+                            %>
+                               
                          <td><input type="hidden" name="username" value=<% out.println(username);%>> </td>
                                     <td>
-                                        <input type="submit" value="Agregar " name="addCard" />
+                                        <input type="submit" value="Agregar " name="addBet" />
                                     </td>
                                                     
                             </tbody>

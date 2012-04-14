@@ -74,7 +74,7 @@ ddsmoothmenu.init({
                         <li><a href="index.html" class="selected"><span></span>Home</a></li>
                         <li><a href="about.html"><span></span>Play</a>
                             <ul>
-                                <li><a href="submenupage.html">For Virtual Money</a></li>
+                                <li><a href="addBet.jsp">For Virtual Money</a></li>
                                 <li><a href="submenupage.html">For Real Money</a></li>                                
                             </ul>
                         </li>                        
