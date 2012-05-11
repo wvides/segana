@@ -16,6 +16,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.dbaccess;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import segana.Tarjeta;
@@ -42,6 +43,7 @@ public class addcard extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+        dbaccess database = new dbaccess();        
         try {
             /*
              * TODO output your page here. You may use following sample code.
@@ -49,7 +51,7 @@ public class addcard extends HttpServlet {
             
 //            String nombre =session
             List <Usuario> lu=null; 
-            lu=validate(request.getParameter("username"));
+            lu=database.validateforcard(request.getParameter("username"));
             Usuario u=null;
             if (lu!=null)
             {
@@ -101,17 +103,7 @@ public class addcard extends HttpServlet {
             out.close();
         }
     }
-
-    private List<Usuario> validate(String email) 
-    {
-        
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-        Query q = session.createQuery("FROM Usuario WHERE email LIKE '" + email+"'");
-        List<Usuario> resultList = q.list();        
-        session.getTransaction().commit();   
-        return resultList;
-    }
+   
     
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

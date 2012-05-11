@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import model.dbaccess;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import segana.Rol;
@@ -43,6 +44,7 @@ public class logger extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+        dbaccess database = new dbaccess();
         try {
             /*
              * TODO output your page here. You may use following sample code.
@@ -50,7 +52,7 @@ public class logger extends HttpServlet {
             HttpSession sess = request.getSession(true);
             //comment
             List<Usuario> u = null;
-            u = validate(request.getParameter("email"),request.getParameter("password"));
+            u = database.validate(request.getParameter("email"),request.getParameter("password"));
             //if null comment to test
             if(u != null)
             {
@@ -146,14 +148,5 @@ public class logger extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    private List<Usuario> validate(String email, String password) 
-    {
-        
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-        Query q = session.createQuery("FROM Usuario WHERE email LIKE '" + email + "' AND password LIKE '" + password + "'");
-        List<Usuario> resultList = q.list();        
-        session.getTransaction().commit();   
-        return resultList;
-    }
+    
 }

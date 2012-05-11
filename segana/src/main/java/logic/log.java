@@ -22,6 +22,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.dbaccess;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.omg.CORBA.ULongLongSeqHelper;
@@ -49,10 +50,11 @@ public class log extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        dbaccess database = new dbaccess();
         PrintWriter out = response.getWriter();
         try {                        
             //comentario
-            List<Usuario>  myuser = validateuser(request.getParameter("email"));
+            List<Usuario>  myuser = database.validateuser(request.getParameter("email"));
             
             out.println("<html>");
             out.println("<head>");
@@ -84,14 +86,14 @@ public class log extends HttpServlet {
                 u.setDireccion(request.getParameter("address"));
                 u.setTarjeta(request.getParameter("tarjeta"));                                    
                 
-                myrol = retrieverol("cliente");
+                myrol = database.retrieverol("cliente");
                 
                 
                 Session session = HibernateUtil.getSessionFactory().openSession();
                 session.beginTransaction();
                 session.save(u);
                 session.getTransaction().commit();   
-                tmpo = retrieveuser(u.getEmail());
+                tmpo = database.retrieveuser(u.getEmail());
                 
                 Rolusuario ux = new Rolusuario();
                 ux.setRol(myrol);
@@ -157,42 +159,10 @@ public class log extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    private List<Usuario> filmaker() 
-    {        
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-        Query q = session.createQuery("FROM Usuario");
-        List<Usuario> resultList = q.list();        
-        session.getTransaction().commit();   
-        return resultList;
-    }
+    
 
-    private List<Usuario> validateuser(String parameter) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-        Query q = session.createQuery("FROM Usuario WHERE email LIKE'" + parameter + "'");
-        List<Usuario> resultList = q.list();        
-        session.getTransaction().commit();   
-        return resultList;
-    }
+    
 
-    private Rol retrieverol(String cliente) {
-        
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-        Query q = session.createQuery("FROM Rol where descripcion like '"+cliente+"'");
-        List<Rol> resultList = q.list();        
-        session.getTransaction().commit();   
-        return resultList.get(0);
-    }
-
-    private Usuario retrieveuser(String email) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-        Query q = session.createQuery("FROM Usuario where email like '"+email+"'");
-        List<Usuario> resultList = q.list();        
-        session.getTransaction().commit();   
-        return resultList.get(0);
-    }
+    
 
 }
