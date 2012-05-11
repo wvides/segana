@@ -9,6 +9,9 @@
 <html>
     <%
         session.removeAttribute("namen");
+        session.removeAttribute("admin");
+        session.removeAttribute("corredor");
+        session.removeAttribute("moderador");
         response.sendRedirect("index.jsp");
     %>    
 </html>

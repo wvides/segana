@@ -53,6 +53,7 @@ public class logger extends HttpServlet {
             //comment
             List<Usuario> u = null;
             u = database.validate(request.getParameter("email"),request.getParameter("password"));
+            out.print("Email: " + request.getParameter("email") + " Password: " + request.getParameter("password") );
             //if null comment to test
             if(u != null)
             {
@@ -92,12 +93,10 @@ public class logger extends HttpServlet {
                 else
                 {
                     response.setHeader("Refresh", "0, URL=index.jsp");
-                }                
-                
-                
+                }                                
             }
             else
-            {
+            {                
                 response.sendRedirect("error.jsp?err=1");
             }
             
