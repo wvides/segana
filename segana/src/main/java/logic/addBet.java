@@ -122,7 +122,8 @@ public class addBet extends HttpServlet {
                     }
             
             
-         
+                    out.println("<H2>Su apuesta fue colocada adecuadamente...</H2>");
+                    response.setHeader("Refresh", "3, URL=selectbet.jsp");
             }
             }
             else
