@@ -59,8 +59,8 @@ ddsmoothmenu.init({
         String username=(String) session.getAttribute("namen");
         
         if(username!=null)
-        {
-            out.println("<p style=\"text-align:center;\"><a href=\"#\" >"+ username +"</a> , <a href=\"logout.jsp\" >Logout</a></p> ");
+        {            
+            out.println("<p style=\"text-align:center;\"><a href=\"userinfo.jsp\" >"+ username +"</a> , <a href=\"logout.jsp\" >Logout</a></p> ");
             
        }
         if(username==null)
