@@ -19,6 +19,32 @@ import segana.Equipo;
 public class TorneoD {
     public List <encuentrosSet> ES=new ArrayList<encuentrosSet>();
     
+    public List<Encuentro> getTorneo(String search)
+    {
+       Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        Query q = session.createQuery(search);
+        List<Encuentro> resultList = q.list();        
+        session.getTransaction().commit();   
+        int i=0;
+        
+        while (i<resultList.size())
+        {
+            encuentrosSet temp=new encuentrosSet();
+            temp.encuentro=resultList.get(i);
+            temp.KeyEncuentro="id"+resultList.get(i).getIdencuentro();
+            
+            ES.add(temp);
+        
+            i++;
+        }
+        
+        
+        
+        
+        return  resultList;
+    }
+    
     public List<Encuentro> getTorneo()
     {
        Session session = HibernateUtil.getSessionFactory().openSession();

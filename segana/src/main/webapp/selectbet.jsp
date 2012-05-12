@@ -106,65 +106,54 @@ ddsmoothmenu.init({
                 </div> <!-- end of menu -->
             </div> <!-- end of header -->
 
-            <div id="templatemo_middle">
-                <div id="templatemo_middle_left">
-                        <h2><strong>Se gana Login</strong></h2>
-                    <p>You can create a login account here, or login with your account.</p>
+            <div id="templatemo_middle">                                       
+                        <center><p><h2>Welcome, Please select an Area to Bet</h2></p></center>
                     
-                    <form name="addc" action="addBet" method="POST"><table border="0">
+                    <form name="addc" action="addBet" method="POST">
+                        <center>
+                        <table border="1">
                            
                             <!--  aqui va la tabla de datos    -->
                             
                             <tbody>
                                 <tr>
+                                    <td><center><h5>Apuesta Mundial</h5></center></td>
+                                    <td><center><h5>Apuesta Europa</h5></center></td>
+                                    <td><center><h5>Apuesta Africa</h5></center></td>
+                                    <td><center><h5>Apuesta America</h5></center></td>
+                                    <td><center><h5>Australia</h5></center></td>
+                                </tr>         
+                                <tr>
                                    <!-- <td>Numero De Tarjeta</td>
                                     <td><input type="text" name="notarjeta" value="" size="40" /></td>-->
-                                </tr>
-                                
-                                <%
-                                
-                                    TorneoD nuevo=new TorneoD();
-                                    List<Encuentro> nuevaLista;
-                                    nuevaLista=nuevo.getTorneo();
-                                    int i=0;
-                                    
-                                    while(i<nuevaLista.size())
-                                     {
-                                        
-                                        out.println("<tr>");
-                                        out.println("<td><input type=\"checkbox\" name=\""+"id"+nuevaLista.get(i).getIdencuentro()+"\" value=\"ON\" /></td>");
-                                        out.println("<td>"+nuevaLista.get(i).getEscenario()+"</td>");
-                                        
-                                        out.println("<td>"+nuevaLista.get(i).getEquipoByEquipoIdequipo().getNombre()+"</td>");                                        
-                                        out.println("<td>"+"<input type=\"text\" name=\""+"E1"+nuevaLista.get(i).getIdencuentro()+"\" value=\"\" size=\"3\" />"+"</td>");
-                                        
-                                        out.println("<td>"+nuevaLista.get(i).getEquipoByEquipoIdequipo1().getNombre()+"</td>");
-                                        out.println("<td>"+"<input type=\"text\" name=\""+"E2"+nuevaLista.get(i).getIdencuentro()+"\" value=\"\" size=\"3\" />"+"</td>");
-                                        
-                                        
-                                        out.println("<td>Apuesta"+"<input type=\"text\" name=\""+nuevaLista.get(i).getIdencuentro()+"Monto"+"\" value=\"\" size=\"3\" />"+"</td>");
-                                        
-                                        out.println("<td>"+nuevaLista.get(i).getFecha()+"</td>");
-                                        out.println("</tr>");
-                                        
-                                        
-                                        
-                                        i++;
-                                     }
-                                    
-                                    
-                            %>
-                               
-                         <td><input type="hidden" name="username" value=<% out.println(username);%>> </td>
-                                    <td>
-                                        <input type="submit" value="Agregar " name="addBet" />
-                                    </td>
-                                                    
+                                   <td>
+                                       <a href="world.jsp"><img src="images/world.jpg" width="200" height="200" alt="world"/>                               
+                                       </a>
+                                   </td>
+                                   <td>
+                                       <a href="europe.jsp"><img src="images/europa.jpg" width="200" height="200" alt="europe"/>
+                                       </a>
+                                   </td>
+                                   <td>
+                                       <a href="africa.jsp"><img src="images/africa.jpg" width="200" height="200" alt="Africa"/>                               
+                                       </a>
+                                   </td>
+                                   <td>
+                                       <a href="america.jsp"><img src="images/america.png" width="200" height="200" alt="America"/>                               
+                                       </a>
+                                   </td>
+                                   <td>
+                                       <a href="australia.jsp"><img src="images/australia.png" width="200" height="200" alt="Australia"/>                               
+                                       </a>
+                                   </td>
+                                </tr>                                                    
+                                                                         
                             </tbody>
-                        </table>                                                
+                        </table>      
+                        </center>
                     </form>
                     
-                </div>
+                
                 
                     <script type="text/javascript" src="js/jquery-1.4.3.min.js"></script>
                     <script type="text/javascript" src="js/jquery.nivo.slider.js"></script>

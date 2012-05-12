@@ -107,14 +107,12 @@ ddsmoothmenu.init({
             </div> <!-- end of header -->
 
             <div id="templatemo_middle">
-                <div id="templatemo_middle_left">
-                        <h2><strong>Se gana Login</strong></h2>
-                    <p>You can create a login account here, or login with your account.</p>
                     
-                    <form name="addc" action="addBet" method="POST"><table border="0">
+                    <form name="addc" action="addBet" method="POST">
+                        <table border="0">
                            
-                            <!--  aqui va la tabla de datos    -->
-                            
+                            <!--  aqui va la tabla de datos    -->                            
+
                             <tbody>
                                 <tr>
                                    <!-- <td>Numero De Tarjeta</td>
@@ -125,46 +123,71 @@ ddsmoothmenu.init({
                                 
                                     TorneoD nuevo=new TorneoD();
                                     List<Encuentro> nuevaLista;
-                                    nuevaLista=nuevo.getTorneo();
-                                    int i=0;
+                                    nuevaLista=nuevo.getTorneo("from Encuentro");
+                                    int i=0;                                                                       
+                                %>
+                            
+                            <%
+                                out.println("<br />");                                                                
+                                    i=0;
+                                    int cnt = 0;                                    
                                     
                                     while(i<nuevaLista.size())
                                      {
+                                        if(cnt == 0){
+                                        out.println("<table border=\"4\">");
+                                        out.println("<tbody>");
+                                        out.println("<tr>");                                            
+                                        }                                        
+                                        out.println("<td>");
                                         
+                                        out.println("<table border=\"1\">");
+                                        out.println("<tbody>");
                                         out.println("<tr>");
-                                        out.println("<td><input type=\"checkbox\" name=\""+"id"+nuevaLista.get(i).getIdencuentro()+"\" value=\"ON\" /></td>");
-                                        out.println("<td>"+nuevaLista.get(i).getEscenario()+"</td>");
-                                        
-                                        out.println("<td>"+nuevaLista.get(i).getEquipoByEquipoIdequipo().getNombre()+"</td>");                                        
-                                        out.println("<td>"+"<input type=\"text\" name=\""+"E1"+nuevaLista.get(i).getIdencuentro()+"\" value=\"\" size=\"3\" />"+"</td>");
-                                        
-                                        out.println("<td>"+nuevaLista.get(i).getEquipoByEquipoIdequipo1().getNombre()+"</td>");
-                                        out.println("<td>"+"<input type=\"text\" name=\""+"E2"+nuevaLista.get(i).getIdencuentro()+"\" value=\"\" size=\"3\" />"+"</td>");
-                                        
-                                        
-                                        out.println("<td>Apuesta"+"<input type=\"text\" name=\""+nuevaLista.get(i).getIdencuentro()+"Monto"+"\" value=\"\" size=\"3\" />"+"</td>");
-                                        
-                                        out.println("<td>"+nuevaLista.get(i).getFecha()+"</td>");
+                                        out.println("<td><input type=\"checkbox\" name=\""+"id"+nuevaLista.get(i).getIdencuentro()+"\" value=\"ON\" />");
+                                        out.println(""+nuevaLista.get(i).getEscenario()+ "<td>"+nuevaLista.get(i).getFecha()+"</td>");
                                         out.println("</tr>");
                                         
+                                        out.println("<tr>");
+                                        out.println("<td>"+nuevaLista.get(i).getEquipoByEquipoIdequipo().getNombre()+"</td>");                                        
+                                        out.println("<td>"+"<input type=\"text\" name=\""+"E1"+nuevaLista.get(i).getIdencuentro()+"\" value=\"\" size=\"3\" />"+"</td>");
+                                        out.println("</tr>");
                                         
+                                        out.println("<tr>");
+                                        out.println("<td>"+nuevaLista.get(i).getEquipoByEquipoIdequipo1().getNombre()+"</td>");
+                                        out.println("<td>"+"<input type=\"text\" name=\""+"E2"+nuevaLista.get(i).getIdencuentro()+"\" value=\"\" size=\"3\" />"+"</td>");
+                                        out.println("</tr>");
                                         
+                                        out.println("<td>Apuesta"+"<input type=\"text\" name=\""+nuevaLista.get(i).getIdencuentro()+"Monto"+"\" value=\"\" size=\"3\" />"+"</td>");
+                                                                                
+                                        out.println("</tr>");
+                                        out.println("</tbody>");
+                                        out.println("</table>");
+                                        
+                                        out.println("</td>");
+                                        cnt++;
+                                        if(cnt == 5){
+                                            cnt = 0;
+                                            out.println("</tr>");
+                                            out.println("</tbody>");
+                                            out.println("</table>");                                            
+                                            out.println("<div id=\"templatemo_main\"></div>");
+                                        }                                                                                                                                                                                                       
                                         i++;
                                      }
                                     
-                                    
                             %>
-                               
                          <td><input type="hidden" name="username" value=<% out.println(username);%>> </td>
                                     <td>
-                                        <input type="submit" value="Agregar " name="addBet" />
+                                        
                                     </td>
                                                     
                             </tbody>
-                        </table>                                                
+                        </table>        
+                                    <input type="submit" value="Agregar " name="addBet" />
                     </form>
                     
-                </div>
+                
                 
                     <script type="text/javascript" src="js/jquery-1.4.3.min.js"></script>
                     <script type="text/javascript" src="js/jquery.nivo.slider.js"></script>
